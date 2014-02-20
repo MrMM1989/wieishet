@@ -5,7 +5,8 @@ class Home extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();    
+		parent::__construct();
+		$this->load->model('Image','', TRUE);    
 	}
 
 	/**
@@ -20,7 +21,7 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->_load_views('game/play.php', 'Speel');
+		$this->_load_views('game/play.php', 'Speel', array());
 	}
 	
 	
@@ -32,7 +33,10 @@ class Home extends CI_Controller {
 	 */	
 	public function upload()
 	{
-		$this->_load_views('upload/upload.php', 'Upload foto');
+		$categories = $this->Image->get_categories();
+		
+		
+		$this->_load_views('upload/upload.php', 'Upload foto', $categories);
 	}
 	
 	
@@ -41,12 +45,15 @@ class Home extends CI_Controller {
 	 * 
 	 * @param string $view - the view needed to be loaded in the page body
 	 * @param string $title - the page title
+	 * @param array $info - aditional data for the page
 	 */ 
-	private function _load_views($view, $title)
+	private function _load_views($view, $title, $info)
 	{
 		$data = array (
-			'title'=> $title
+			'title'=> $title,
+			'info' => $info
 		);
+		
 		
 		$this->load->view('header.php', $data);
 		$this->load->view($view);
