@@ -7,5 +7,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>public/css/base.css"  />
   </head>
   <body>
-  
+  	<div id="nav">
+  		<ul>
+  			<li><a href="<?php echo site_url(); ?>">Speel</a></li>
+  			<li><a href="<?php echo site_url(); ?>/home/upload">Upload foto</a></li>
+  		</ul>
+  	</div><!-- end of div nav -->
   	
