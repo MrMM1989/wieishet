@@ -1,0 +1,30 @@
+== Algemene installatie ==
+
+
+Upload de mappen: 'application', 'public' en 'system'; het .HTACCESS - bestand en het 'index.php' bestand naar de webserver
+
+
+
+== Database installatie == 
+
+
+1) Maak een MySQL database aan met de naam 'wie_is_het'
+
+2) Importeer het bestand 'wie_is_het.sql' in je database
+
+
+
+== Database configuratie == 
+
+
+Open de map 'application' en daarna de map 'config' open daar het bestand 'database.php'.
+
+Pas daar de gegevens aan naar de juiste database gebruikers: 
+
+$db['default']['hostname']  staat voor de hostname en hier moet je de locatie/url van je database server zetten
+
+$db['default']['username']  vul hier de gebruikersnaam van je databaseaccount in			
+
+$db['default']['password']  vul hier het wachtwoord van je databaseaccount in
+
+$db['default']['database']  vul hier de naam van de database in, als je de naam zoals hierboven neemt dan is dit: 'wie_is_het'
