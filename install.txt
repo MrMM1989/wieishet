@@ -12,6 +12,8 @@ Upload de mappen: 'application', 'public' en 'system'; het .HTACCESS - bestand e
 
 2) Importeer het bestand 'wie_is_het.sql' in je database
 
+3) Importeer het bestand 'init_wie_is_het.sql' in je database
+
 
 
 == Database configuratie == 
