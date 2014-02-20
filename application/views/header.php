@@ -10,7 +10,6 @@
   	<div id="nav">
   		<ul>
   			<li><a href="<?php echo site_url(); ?>">Speel</a></li>
-  			<li><a href="<?php echo site_url(); ?>/home/upload">Upload foto</a></li>
+  			<li><a href="<?php echo site_url(); ?>home/upload">Upload foto</a></li>
   		</ul>
-  	</div><!-- end of div nav -->
-  	
+  	</div><!-- end of div nav --> 
