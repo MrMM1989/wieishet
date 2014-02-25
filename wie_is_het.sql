@@ -34,6 +34,7 @@ CREATE  TABLE IF NOT EXISTS `question` (
   `question_id` INT NOT NULL AUTO_INCREMENT ,
   `question_text` VARCHAR(150) NULL ,
   `question_0_normal_1_category` TINYINT(1) NULL ,
+  `question_validation_group` VARCHAR(100) NOT NULL ,
   `question_category_id` INT NOT NULL ,
   PRIMARY KEY (`question_id`) ,
   INDEX `q_category_id_idx` (`question_category_id` ASC) ,
