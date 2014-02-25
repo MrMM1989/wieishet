@@ -1,10 +1,18 @@
 	<div id="upload-form">
 		
-	<?php echo form_open_multipart('home/upload');?>
+	<?php $data = array (
+			'id' => 'upload-form'
+	);
+	
+	echo form_open_multipart('home/upload', $data);?>
 	<ul>
 		<li>
-			<label for="file">Kies een bestand: </label>
+			<label for="file">Kies een foto: </label>
 			<input type="file" id="file" name="file" />
+		</li>
+		<li>
+			<label for="filename">Geef je foto een unieke naam: </label>
+			<input type="text" id="filename" name="filename" placeholder="Typ hier de fotonaam" />
 		</li>
 		<li>
 			<label for="category">Selecteer een categorie voor je foto: </label>

@@ -8,7 +8,8 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Image','', TRUE);    
 	}
-
+	
+	
 	/**
 	 *  Home controller - index method - Homepage site
 	 * 
@@ -23,6 +24,27 @@ class Home extends CI_Controller {
 	{
 		$this->_load_views('game/play.php', 'Speel', array());
 	}
+	
+	
+	/**
+	 * Method for getting the questions for given category
+	 * 
+	 * 
+	 */
+	 public function question_category()
+	 {		
+	 	if($this->input->post('category'))
+		{
+			$category = $this->input->post('category');
+			$questions = $this->Image->get_questions_category($category);
+			
+			echo json_encode($questions);
+		}
+		else
+		{
+			redirect('/home/upload');	
+		}
+	 }	
 	
 	
 	/**
