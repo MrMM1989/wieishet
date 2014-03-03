@@ -1,0 +1,71 @@
+{
+    "questions": [{
+            "attr": "man",
+            "question": "Is het een man?",
+            "final_question": false
+        },{
+            "attr": "vrouw",
+            "question": "Is het een vrouw?",
+            "final_question": false
+        },{
+            "attr": "object",
+            "question": "Is het een object?",
+            "final_question": false
+        },{
+            "attr": "geel",
+            "question": "Is het geel?",
+            "final_question": false
+        },{
+            "attr": "zwart",
+            "question": "Is het zwart?",
+            "final_question": false
+        },{
+            "attr": "bruin",
+            "question": "Is het bruin?",
+            "final_question": false
+        },{
+            "attr": "rood",
+            "question": "Is het rood?",
+            "final_question": false
+        },{
+            "attr": "groen",
+            "question": "Is het groen?",
+            "final_question": false
+        },{
+            "attr": "blauw",
+            "question": "Is het blauw?",
+            "final_question": false
+        },{
+            "attr": "muziekinstrument",
+            "question": "Is het een muziekinstrument?",
+            "final_question": false
+        },{
+            "attr": "gebruiksvoorwerp",
+            "question": "Is het een gebruiksvoorwerp?",
+            "final_question": false
+        },{
+            "attr": "belg",
+            "question": "Is hij/zij Belg?",
+            "final_question": false
+        },{
+            "attr": "radio",
+            "question": "Is hij/zij bekend van de radio?",
+            "final_question": false
+        },{
+            "attr": "tv",
+            "question": "Is hij/zij bekend van TV?",
+            "final_question": false
+        },{
+            "attr": "peter",
+            "question": "Is het Peter van de veire?",
+            "final_question": true
+        },{
+            "attr": "ann",
+            "question": "Is het Ann Van Elsen?",
+            "final_question": true
+        },{
+            "attr": "piano",
+            "question": "Is het een piano?",
+            "final_question": true
+        }]
+}
