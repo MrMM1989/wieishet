@@ -90,6 +90,8 @@ class Home extends CI_Controller {
 				 	$temp_value = $form_properties[$i]->value;
 					$val_group = $questions[$i]->val_group;
 					
+					echo $temp_value;
+					
 					if($i === 0)
 					{
 						$prev_val_group = $val_group;	
@@ -97,7 +99,7 @@ class Home extends CI_Controller {
 					
 					if($prev_val_group === $val_group)
 					{
-						if ($temp_value)
+						if ($temp_value === 'true')
 						{
 							$counter_true++;
 							$temp_property = array (
@@ -140,7 +142,7 @@ class Home extends CI_Controller {
 							$counter_true = 0;
 							$counter_val_group = 0;
 							
-							if ($temp_value)
+							if ($temp_value === 'true')
 							{
 								$counter_true++;
 								$temp_property = array (
@@ -180,10 +182,19 @@ class Home extends CI_Controller {
 					$isValid = 	FALSE;	 
 				 }	
 				 
-				 
-				echo '<p>';
-				var_dump($val_properties);
-				echo '</p>';
+			}
+
+			echo '<p>';
+			var_dump($val_properties);
+			echo '</p>';
+			
+			if ($isValid)
+			{
+				echo 'GEGEVENS DOORGESTUURD NAAR DATABASE!!!';
+			}
+			else
+			{
+				echo 'FOUTIEVE GEGEVENS! PAGINA INVALID!';	
 			}
 		
 			//var_dump(current($questions)->vraag);
