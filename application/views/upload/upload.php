@@ -16,7 +16,7 @@
 		</li>
 		<li>
 			<label for="category">Selecteer een categorie voor je foto: </label>
-			<select id="category">
+			<select id="category" name="category">
 				<option disabled>-- Selecteer een categorie --</option>
 				<?php foreach($info as $line): ?>
 					<option value="<?php echo $line['id'] ?>"><?php echo $line['name']; ?></option>

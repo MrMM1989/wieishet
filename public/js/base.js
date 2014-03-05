@@ -13,6 +13,7 @@ function upload_category()
 	$('#category').change(function() 
 	{
 		$('#upload-form ul li.question-element').remove();
+		$('#upload-form ul li.question-submit').remove();
 		
 		var index = $('#category').val();
 		
@@ -26,7 +27,7 @@ function upload_category()
 				
 				for (var key in parsed_data)
 				{
-					var span = $('<span>').attr('class', 'question').html(parsed_data[key]['vraag']);
+					var span = $('<span>').attr('class', 'question').html(parsed_data[key]['question']);
 									
 					var labelYes = $('<label>').attr('for', 'ja-'+parsed_data[key]['id']).text('Ja');
 					
@@ -43,7 +44,7 @@ function upload_category()
 				
 				var submitButton = $('<input>').attr({'type': 'submit', 'value': 'Verzenden', 'name': 'submit'});
 				
-				var li = $('<li>').attr('class', 'question-element').append(submitButton);
+				var li = $('<li>').attr('class', 'question-submit').append(submitButton);
 				
 				li.appendTo($('#upload-form ul'));	
 			}
@@ -60,8 +61,45 @@ function upload_category()
 }
 
 
-$( document ).ready(function() {
+/**
+ * Function for submitting the upload form 
+ */
+function upload_form_submit()
+{
+	$('#upload-form').submit(function(event)
+	{
+		
+		var form_properties = [];
+		
+		
+		$('li.question-element').each(function(){
+			
+		   var value 	=	$(this).children(':radio:checked').val();
+		   var id 		=	$(this).children(':radio:checked').attr('name');
+		   
+		   var object 	=  {
+		   	
+		   		id: id,
+		   		value: value		   	
+		   };
+		   
+		   form_properties.push(object); 	   
+									
+		});
+		
+		var hidden = $('<input>').attr({'type': 'hidden', 'name': 'hidden', 'id': 'hidden', 'value': JSON.stringify(form_properties)});
+		
+		var li = $('<li>').attr('class', 'question-submit').append(hidden);
+				
+		li.appendTo($('#upload-form ul'));	
+		
+	});
+}
+
+$( document ).ready(function() 
+{
  	
- 	upload_category(); 	
- 	 	
+ 	upload_category(); 
+ 	upload_form_submit();
+ 	 	 	
 });

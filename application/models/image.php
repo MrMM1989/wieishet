@@ -47,8 +47,8 @@ class Image extends CI_Model {
 				'question_0_normal_1_category' => FALSE								
 		);	
 		
-		$this->db->select('question_id AS id, question_text AS vraag, question_validation_group AS val_group');
-		$this->db->select('question_0_normal_1_category AS vraag_type, question_category_id AS cat_id');
+		$this->db->select('question_id AS id, question_text AS question, question_validation_group AS val_group');
+		$this->db->select('question_0_normal_1_category AS question_type, question_category_id AS cat_id');
 		$this->db->from('question');
 		$this->db->where($query_data);
 			

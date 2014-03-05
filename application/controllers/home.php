@@ -55,10 +55,147 @@ class Home extends CI_Controller {
 	 */	
 	public function upload()
 	{
-		$categories = $this->Image->get_categories();
+		if ($this->input->post('submit'))
+		{
+			//Form fields
+			$category = $this->input->post('category');
+			$form_properties = $this->input->post('hidden');
+			
+			$form_properties = json_decode($form_properties);
+			
+			//field for checking if form fields are valid or not
+			$isValid = TRUE; 
+			
+			//field with data from database
+			$questions = $this->Image->get_questions_category($category);
+			
+			//Validated properties, ready to be inserted into the database
+			$val_properties = array();
+			
+			//Validation variables
+			$prev_val_group = '';
+			$counter_true = 0;
+			$counter_val_group = 0;
+			
+			echo '<p>';
+			var_dump($form_properties);
+			echo '</p>';
+			
+			for ($i=0; $i < count($questions); $i++) 
+			{
+								
+				 if ($questions[$i]->id === $form_properties[$i]->id)
+				 {
+				 	$temp_id = $form_properties[$i]->id;
+				 	$temp_value = $form_properties[$i]->value;
+					$val_group = $questions[$i]->val_group;
+					
+					if($i === 0)
+					{
+						$prev_val_group = $val_group;	
+					}
+					
+					if($prev_val_group === $val_group)
+					{
+						if ($temp_value)
+						{
+							$counter_true++;
+							$temp_property = array (
+							
+								'id' => $temp_id,
+								'value' => TRUE																							
+							);
+							$val_properties[] = $temp_property;							
+						}
+						else
+						{
+							$temp_property = array (
+							
+								'id' => $temp_id,
+								'value' => FALSE																							
+							);
+							$val_properties[] = $temp_property;		
+						}
+						
+						$counter_val_group++;
+						
+						if ($i ===  count($questions)-1 )
+						{
+							if (($counter_true !== 1)&&($counter_val_group !== 1))
+							{
+								$isValid = FALSE;
+								break;
+							}
+						}
+					}
+					else
+					{
+						if (($counter_true !== 1)&&($counter_val_group !== 1))
+						{
+							$isValid = FALSE;
+							break;
+						}
+						else 
+						{
+							$counter_true = 0;
+							$counter_val_group = 0;
+							
+							if ($temp_value)
+							{
+								$counter_true++;
+								$temp_property = array (
+								
+									'id' => $temp_id,
+									'value' => TRUE																							
+								);
+								$val_properties[] = $temp_property;							
+							}
+							else
+							{
+								$temp_property = array (
+								
+									'id' => $temp_id,
+									'value' => FALSE																							
+								);
+								$val_properties[] = $temp_property;		
+							}							
+							
+							$prev_val_group = $val_group;
+							$counter_val_group++; 
+							
+							if ($i ===  count($questions)-1 )
+							{
+								if (($counter_true !== 1)&&($counter_val_group !== 1))
+								{
+									$isValid = FALSE;
+									break;
+								}
+							}							
+						}
+					}
+					
+				 }
+				 else
+				 {
+					$isValid = 	FALSE;	 
+				 }	
+				 
+				 
+				echo '<p>';
+				var_dump($val_properties);
+				echo '</p>';
+			}
 		
+			//var_dump(current($questions)->vraag);
+			
+		}
+		else 
+		{			
+			$categories = $this->Image->get_categories();		
 		
-		$this->_load_views('upload/upload.php', 'Upload foto', $categories);
+			$this->_load_views('upload/upload.php', 'Upload foto', $categories);
+			
+		}		
 	}
 	
 	
